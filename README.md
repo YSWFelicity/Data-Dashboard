@@ -21,6 +21,10 @@ using live data from the free [disease.sh](https://disease.sh/) open API.
   together.
 - Responsive layout with light/dark support.
 
+## 🎥 Demo video
+
+[Watch the demo](https://drive.google.com/file/d/1vSi0ToNVPbI73O9dM1jyliRArz1FQmrR/view?usp=sharing)
+
 ## 🚀 Getting started
 
 ```bash
@@ -36,7 +40,3 @@ npm run preview  # preview the production build
 - [src/utils.js](src/utils.js) — number/percent formatters and stat computation.
 - [src/App.jsx](src/App.jsx) — data fetching, filter state, and composition.
 - [src/components/](src/components/) — `SummaryStats`, `Filters`, `CountryList`.
-
-## 📡 Data source
-
-[disease.sh](https://disease.sh/) — an open COVID-19 API, no API key required.
