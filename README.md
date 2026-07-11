@@ -1,68 +1,72 @@
-# 🦠 Global COVID-19 Dashboard
+# Web Development Project 6 - *Global COVID-19 Dashboard*
 
-A React + Vite data dashboard that tells the story of COVID-19's global
-footprint — confirmed cases, deaths, and per-capita impact for every country —
-using live data from the free [disease.sh](https://disease.sh/) open API.
+Submitted by: **Yingshu Wang**
 
-## ✨ Features
+This web app: **An interactive dashboard that tells the story of COVID-19's global footprint using live data from the free [disease.sh](https://disease.sh/) open API. The dashboard lists 231 countries with their cases, deaths, and per-capita impact, surfaces summary statistics and two charts, and lets you search and filter the data. Clicking any country (or a bar in the chart) opens a dedicated detail view with a unique URL, showing extra data — recovered, active, and critical cases, testing figures, recovery rate, and the share of population infected — alongside a case-outcomes chart.**
 
-- **Live data fetch** with the `useEffect` hook and `async/await` (see
-  [src/App.jsx](src/App.jsx) and [src/api.js](src/api.js)).
-- **231 countries**, one per row, each showing continent, population, cases,
-  cases-per-million, deaths, and case-fatality rate.
-- **Three+ summary statistics** that recompute live from the filtered set:
-  countries shown, total cases, total deaths (with overall case-fatality
-  rate), and the country hit hardest per capita.
-- **Search bar** that filters the list by country name as you type.
-- **Continent filter** (dropdown) restricting the list by a different
-  attribute than the search bar.
-- **Stretch: multiple simultaneous filters with different input types** — text
-  search + dropdown + a "minimum cases per million" range slider, all applied
-  together.
-- Responsive layout with light/dark support.
+Time spent: **6** hours spent in total
 
-### Part 2 — routing, detail views & charts
+## Required Features
 
-- **React Router** navigation (`react-router-dom`): a dashboard route `/` and a
-  dynamic detail route `/country/:id`. Each country has a **unique, direct
-  link** to its own page — extracted with the `useParams()` hook (see
-  [src/pages/CountryDetail.jsx](src/pages/CountryDetail.jsx)).
-- **Clickable list** — every row in the dashboard is a `Link` to that country's
-  detail view ([src/components/CountryList.jsx](src/components/CountryList.jsx)).
-- **Detail view with extra data** not shown on the dashboard: recovered, active
-  & critical cases, total tests, tests-per-million, tests-per-case, recovery
-  rate, and share of population infected — plus a case-outcomes chart.
-- **Shared sidebar** rendered on both the dashboard and detail views, with a
-  live worldwide snapshot ([src/components/Sidebar.jsx](src/components/Sidebar.jsx)).
-- **Two dashboard charts** (built with [Recharts](https://recharts.org/), each
-  describing a different aspect of the data):
-  - *Top 10 countries* — a bar chart of magnitude (raw scale of the pandemic).
-  - *Where the cases are* — a donut chart of the case distribution by continent.
-- **Stretch: toggle between visualizations** — the top-countries chart switches
-  between *total cases* and *cases per million*, and clicking a bar opens that
-  country's detail page.
-- **Stretch: annotated dashboard** — each chart and stat carries a short
-  description explaining what's interesting about the data.
+The following **required** functionality is completed:
 
-## 🎥 Demo video
+- [x] **Clicking on an item in the list view displays more details about it**
+  - Clicking on an item in the dashboard list navigates to a detail view for that item
+  - Detail view includes extra information about the item not included in the dashboard view
+  - The same sidebar is displayed in detail view as in dashboard view
+  - *To ensure an accurate grade, your sidebar **must** be viewable when showing the details view in your recording.*
+- [x] **Each detail view of an item has a direct, unique URL link to that item’s detail view page**
+  -  *To ensure an accurate grade, the URL/address bar of your web browser **must** be viewable in your recording.*
+- [x] **The app includes at least two unique charts developed using the fetched data that tell an interesting story**
+  - At least two charts should be incorporated into the dashboard view of the site
+  - Each chart should describe a different aspect of the dataset
 
-[Watch the demo](https://drive.google.com/file/d/1FNE5w3IiJD8A_OMVajB4zWFnPJ9xIWDG/view?usp=sharing)
 
-## 🚀 Getting started
+The following **optional** features are implemented:
 
-```bash
-npm install
-npm run dev      # start the dev server (http://localhost:5173)
-npm run build    # production build
-npm run preview  # preview the production build
-```
+- [x] The site’s customized dashboard contains more content that explains what is interesting about the data 
+  - e.g., an additional description, graph annotation, suggestion for which filters to use, or an additional page that explains more about the data
+  - Each chart and summary statistic carries a short description explaining what the data shows.
+- [x] The site allows users to toggle between different data visualizations
+  - User should be able to use some mechanism to toggle between displaying and hiding visualizations 
+  - The "Top 10 countries" chart toggles between *Total cases* and *Cases per million*.
 
-## 🗂️ Structure
+  
+The following **additional** features are implemented:
 
-- [src/api.js](src/api.js) — fetches and normalizes the disease.sh data.
-- [src/utils.js](src/utils.js) — formatters, stat computation, and chart aggregations.
-- [src/App.jsx](src/App.jsx) — data fetching, layout shell, and route definitions.
-- [src/pages/](src/pages/) — `Dashboard` (filters + stats + charts + list) and
-  `CountryDetail` (the per-country detail view).
-- [src/components/](src/components/) — `Sidebar`, `SummaryStats`, `Filters`,
-  `CountryList`, and `charts/` (`TopCountriesChart`, `CasesByContinentChart`).
+* [x] **Persistent shared sidebar** with a live worldwide snapshot (total cases, deaths, case-fatality rate, countries tracked, and the country with the most cases) shown on both the dashboard and every detail view.
+* [x] **Charts are interactive** — hovering any bar or donut slice shows a custom tooltip, and clicking a bar in the "Top 10" chart navigates directly to that country's detail page.
+* [x] **Three simultaneous filters** with different input types — a text search, a continent dropdown, and a "minimum cases per million" range slider — all applied together, with stats and charts recomputing live.
+* [x] **Colorblind-safe, validated color palette** with full light/dark mode support; each continent keeps a fixed hue so colors follow the entity, not its rank.
+* [x] **Graceful handling of missing data** — countries where recovered/active counts aren't reported fall back to "not reported" instead of showing misleading zeros.
+* [x] **Responsive layout** that collapses the sidebar to a top bar on narrow screens.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+[Watch the walkthrough](https://drive.google.com/file/d/1FNE5w3IiJD8A_OMVajB4zWFnPJ9xIWDG/view?usp=sharing)
+
+## Notes
+
+Describe any challenges encountered while building the app.
+
+- **Router refactor:** Part 1 held all state in a single `App` component. To add routing I restructured the app into a layout shell (`App`) that fetches the data once and shares it, plus separate `Dashboard` and `CountryDetail` page components — moving the filter state down into `Dashboard` where it belongs.
+- **Chart rendering:** Recharts' default entrance animation left charts blank in the initial paint; disabling the animation (`isAnimationActive={false}`) made rendering immediate and deterministic.
+- **API data gaps:** The disease.sh API has stopped reporting recovered/active cases for many countries, so the detail view and its case-outcomes chart had to degrade gracefully when those values are zero.
+
+## License
+
+    Copyright [2026] [Yingshu Wang of copyright owner]
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
