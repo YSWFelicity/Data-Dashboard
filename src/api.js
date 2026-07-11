@@ -17,9 +17,13 @@ function normalize(raw) {
         deaths,
         recovered: c.recovered ?? 0,
         active: c.active ?? 0,
+        critical: c.critical ?? 0,
         tests: c.tests ?? 0,
         casesPerMillion: c.casesPerOneMillion ?? 0,
         deathsPerMillion: c.deathsPerOneMillion ?? 0,
+        testsPerMillion: c.testsPerOneMillion ?? 0,
+        todayCases: c.todayCases ?? 0,
+        todayDeaths: c.todayDeaths ?? 0,
         flag: c.countryInfo?.flag || '',
         flagAlt: `Flag of ${c.country ?? 'country'}`,
         // Case fatality rate = deaths / confirmed cases, as a percentage.

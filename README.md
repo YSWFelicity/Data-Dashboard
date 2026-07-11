@@ -21,9 +21,32 @@ using live data from the free [disease.sh](https://disease.sh/) open API.
   together.
 - Responsive layout with light/dark support.
 
+### Part 2 — routing, detail views & charts
+
+- **React Router** navigation (`react-router-dom`): a dashboard route `/` and a
+  dynamic detail route `/country/:id`. Each country has a **unique, direct
+  link** to its own page — extracted with the `useParams()` hook (see
+  [src/pages/CountryDetail.jsx](src/pages/CountryDetail.jsx)).
+- **Clickable list** — every row in the dashboard is a `Link` to that country's
+  detail view ([src/components/CountryList.jsx](src/components/CountryList.jsx)).
+- **Detail view with extra data** not shown on the dashboard: recovered, active
+  & critical cases, total tests, tests-per-million, tests-per-case, recovery
+  rate, and share of population infected — plus a case-outcomes chart.
+- **Shared sidebar** rendered on both the dashboard and detail views, with a
+  live worldwide snapshot ([src/components/Sidebar.jsx](src/components/Sidebar.jsx)).
+- **Two dashboard charts** (built with [Recharts](https://recharts.org/), each
+  describing a different aspect of the data):
+  - *Top 10 countries* — a bar chart of magnitude (raw scale of the pandemic).
+  - *Where the cases are* — a donut chart of the case distribution by continent.
+- **Stretch: toggle between visualizations** — the top-countries chart switches
+  between *total cases* and *cases per million*, and clicking a bar opens that
+  country's detail page.
+- **Stretch: annotated dashboard** — each chart and stat carries a short
+  description explaining what's interesting about the data.
+
 ## 🎥 Demo video
 
-[Watch the demo](https://drive.google.com/file/d/1vSi0ToNVPbI73O9dM1jyliRArz1FQmrR/view?usp=sharing)
+[Watch the demo](https://drive.google.com/file/d/1FNE5w3IiJD8A_OMVajB4zWFnPJ9xIWDG/view?usp=sharing)
 
 ## 🚀 Getting started
 
@@ -37,6 +60,9 @@ npm run preview  # preview the production build
 ## 🗂️ Structure
 
 - [src/api.js](src/api.js) — fetches and normalizes the disease.sh data.
-- [src/utils.js](src/utils.js) — number/percent formatters and stat computation.
-- [src/App.jsx](src/App.jsx) — data fetching, filter state, and composition.
-- [src/components/](src/components/) — `SummaryStats`, `Filters`, `CountryList`.
+- [src/utils.js](src/utils.js) — formatters, stat computation, and chart aggregations.
+- [src/App.jsx](src/App.jsx) — data fetching, layout shell, and route definitions.
+- [src/pages/](src/pages/) — `Dashboard` (filters + stats + charts + list) and
+  `CountryDetail` (the per-country detail view).
+- [src/components/](src/components/) — `Sidebar`, `SummaryStats`, `Filters`,
+  `CountryList`, and `charts/` (`TopCountriesChart`, `CasesByContinentChart`).

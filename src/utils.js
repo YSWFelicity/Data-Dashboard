@@ -37,3 +37,25 @@ export function formatPercent(n) {
   if (n === null || n === undefined || Number.isNaN(n)) return '—'
   return `${n.toFixed(1)}%`
 }
+
+// Aggregate confirmed cases (and deaths) by continent, for the donut chart.
+// Returns one row per continent, sorted by cases descending.
+export function casesByContinent(countries) {
+  const map = new Map()
+  for (const c of countries) {
+    const key = c.continent || 'Other'
+    const row = map.get(key) || { continent: key, cases: 0, deaths: 0, count: 0 }
+    row.cases += c.cases
+    row.deaths += c.deaths
+    row.count += 1
+    map.set(key, row)
+  }
+  return [...map.values()].sort((a, b) => b.cases - a.cases)
+}
+
+// Top N countries by a chosen numeric metric ('cases' or 'casesPerMillion').
+export function topCountriesBy(countries, metric, n = 10) {
+  return [...countries]
+    .sort((a, b) => b[metric] - a[metric])
+    .slice(0, n)
+}
