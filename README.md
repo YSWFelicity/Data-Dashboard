@@ -2,7 +2,7 @@
 
 Submitted by: **Yingshu Wang**
 
-This web app: **An interactive dashboard that tells the story of COVID-19's global footprint using live data from the free [disease.sh](https://disease.sh/) open API. The dashboard lists 231 countries with their cases, deaths, and per-capita impact, surfaces summary statistics and two charts, and lets you search and filter the data. Clicking any country (or a bar in the chart) opens a dedicated detail view with a unique URL, showing extra data — recovered, active, and critical cases, testing figures, recovery rate, and the share of population infected — alongside a case-outcomes chart.**
+This web app: **An interactive dashboard that tells the story of COVID-19's global footprint. The dashboard lists 231 countries with their cases, deaths, and per-capita impact, surfaces summary statistics and two charts, and lets you search and filter the data. Clicking any country (or a bar in the chart) opens a dedicated detail view with a unique URL, showing extra data — recovered, active, and critical cases, testing figures, recovery rate, and the share of population infected — alongside a case-outcomes chart.**
 
 Time spent: **6** hours spent in total
 
